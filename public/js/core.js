@@ -1,0 +1,1 @@
+var musicAppVar = angular.module('musicApp',['ngRoute', 'ngResource','ngCsv']);

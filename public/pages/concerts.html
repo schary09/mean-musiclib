@@ -1,0 +1,98 @@
+<section class="section-form" id="concert-section">
+    <div class="row">
+        <h2>Enter Concert Details</h2>
+    </div>
+    <form>
+        <div class="form-group">
+            <div class="row">
+                <div class="col span-1-of-3">
+                    <label for="name">Name:</label>
+                </div>
+                <div class="col span-2-of-3">
+                 <input id="name" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.name">
+                </div>
+            </div>
+           <div class="row">
+                <div class="col span-1-of-3">
+                    <label for="date">Date:</label>
+                </div>
+                <div class="col span-2-of-3">
+                    <input id="date" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col span-1-of-3">
+                    <label for="location">Location:</label>
+                </div>
+                <div class="col span-2-of-3">
+                    <input id="location" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.location">
+                </div>
+            </div>
+            <!---<h3>{{orgData._id}}</h3>--->
+            <button class="btn" type="submit" ng-click="createConcert(orgData._id)">Add Concert</button>
+        </div>
+    </form>
+</section>
+
+<section class="concert-list">
+   <div class="row">
+        <h2>Concert list</h2>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in orgData.concerts">
+                    <td><input type="radio" name="aconcert" ng-click="editData.concert = c"></td>
+                    <td>{{c.name}}</td>
+                    <td>{{c.date}}</td>
+                    <td>{{c.location}}</td>
+                </tr>   
+            </tbody>
+        </table>
+    </div>
+</section>
+
+    
+    <!----<section class="section-form" id="concert-section">
+                <div class="row">
+                    <h2>Enter Concert Details</h2>
+                </div>
+                <form class="concert-form" ng-controller="mainController">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label for="name">Name:</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                             <input id="name" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.name">
+                            </div>
+                        </div>
+                       <div class="row">
+                            <div class="col span-1-of-3">
+                                <label for="date">Date:</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <input id="date" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.date">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label for="location">Location:</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <input id="location" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.location">
+                            </div>
+                        </div>
+                        <h3>{{orgData._id}}</h3>
+                        <button class="btn" type="submit" ng-click="createConcert(orgData._id)">Add Concert</button>
+                    </div>
+                </form>
+            </section>---->

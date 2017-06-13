@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="musicApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        <title>Music App</title>
+        <link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic'" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <script src="//code.angularjs.org/1.5.0/angular.min.js"></script>
+        <script src="//code.angularjs.org/1.5.0/angular-route.min.js"></script>
+        <script src="//code.angularjs.org/1.5.0/angular-resource.min.js"></script>
+        <script src="//code.angularjs.org/1.5.0/angular-sanitize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-csv/0.3.6/ng-csv.min.js"></script>
+        <script src="js/core.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/routes.js"></script>
+    </head>
+    <body>
+        <header>
+			<nav class="navbar navbar-default">
+				<div class="row">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/#/">Design Concert Playlist</a>
+					</div>
+
+					<ul class="nav navbar-nav navbar-right">
+                        <li><a href="#/concerts"><i class="fa fa-home"></i>Concerts</a></li>
+                        <li><a href="#/concert/pieces"><i class="fa fa-home"></i>Pieces</a></li>
+                        <li><a href="#/concert/instruments"><i class="fa fa-home"></i>Instruments</a></li>
+                        <li><a href="#/concert/pieces/parts"><i class="fa fa-home"></i>Parts</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+        <div class="container">
+        	<div ng-view></div>
+    	</div>
+    </body>
+
+</html>

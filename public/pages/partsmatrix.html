@@ -1,0 +1,35 @@
+<section class="section-form" id="parts-matrix">
+<div class="row">
+    <h2>Parts Matrix</h2>    
+</div>
+<form>
+    <div class="form-group">
+        <div class="row">
+             <div class="col span-1-of-3">
+                <label for="olist">Concert:</label>
+            </div>                           
+            <div class="col span-2-of-3">
+                    <select name="clist" id="clist" ng-model="selectedC" ng-options="c.name for c in orgData.concerts " ng-change="getPartsMatrix(orgData._id,selectedC._id)">
+                    </select>
+            </div>
+        </div>                       
+    </div>
+</form>
+    
+    <div class="table-responsive">
+    <table class="table"> 
+        <thead>
+        <tr>
+            <th></th>
+            <th ng-repeat ="p in selectedC.pieces">{{p.title}}</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat ="i in selectedC.instruments">
+                <td>{{i.instrument}}</td>
+            </tr>                        
+        </tbody>               
+    </table>               
+</div>
+    {{selectedC}}
+</section>

@@ -1,0 +1,122 @@
+<section class="concert-add-parts">
+<div class="row">
+    <h2>Add Part</h2>
+</div>
+<form>
+    <div class="form-group">
+        <div class="row">
+             <div class="col span-1-of-3">
+                <label for="olist">Concert:</label>
+            </div>                           
+            <div class="col span-2-of-3">
+                    <select class="form-control" name="clist" id="clist" ng-model="selectedC" ng-options="c.name for c in orgData.concerts">
+                    </select>
+            </div>
+        </div>                       
+        <div class="row">
+              <div class="col span-1-of-3">
+                <label for="pieceslist">Piece:</label>
+            </div>                           
+           <div class="col span-2-of-3">
+                <select class="form-control" name="pieceslist" id="pieceslist" ng-model="selectedP" ng-options="p.title for p in selectedC.pieces" ng-change="getParts(selectedP.title )">
+                </select>
+            </div>                                                
+        </div>
+         <br>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="instrument">Instrument:</label>
+            </div>
+            <div class="col span-2-of-3">
+                <select class="form-control" name="ilist" id="ilist" ng-model="selectedI" ng-options="i.instrument for i in selectedC.instruments ">
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="key">Key:</label>
+            </div>
+           <div class="col span-2-of-3">
+             <input id="key" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.key">
+            </div>            
+        </div>
+        <!---<button class="btn" type="button" ng-click="updatePart(selectedP.title, selectedI.instrument)">Update Part</button>--->
+        <button id="addBtn" value="addBtn" class="btn" type="button" ng-click="createPart(selectedP.title, selectedI.instrument)">Add Part</button>
+    </div>
+</form>
+</section>
+<section class="concert-parts-list-by-piece">
+<div class="row">
+    <h2>Parts for selected Piece</h2>    
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead><tr>
+                <th>Instrument</th>
+                <th>Key</th>
+            </tr>
+        </thead>        
+        <tbody>
+            <tr ng-repeat ="t in parts">
+                <td>{{t.instrument_name}}</td>
+                <td>{{t.key}}</td>
+            </tr>                        
+        </tbody>               
+    </table>
+   <button class="btn" ng-csv="getPartsCSV()" filename="parts.csv">Download</button>    
+</div>
+</section>
+<section class="concert-update-parts">
+<div class="row">
+    <h2>Update Part</h2>
+</div>
+<form>
+    <div class="form-group">
+        <div class="row">
+             <div class="col span-1-of-3">
+                <label for="olist">Concert:</label>
+            </div>                           
+            <div class="col span-2-of-3">
+                    <select class="form-control" name="clist" id="clist" ng-model="selectedCU" ng-options="c.name for c in orgData.concerts">
+                    </select>
+            </div>
+        </div>                       
+        <div class="row">
+              <div class="col span-1-of-3">
+                <label for="pieceslist">Piece:</label>
+            </div>                           
+           <div class="col span-2-of-3">
+                <select class="form-control" name="pieceslist" id="pieceslist" ng-model="selectedPU" ng-options="p.title for p in selectedCU.pieces">
+                </select>
+            </div>                                                
+        </div>
+         <br>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="instrument">Instrument:</label>
+            </div>
+            <div class="col span-2-of-3">
+                <select class="form-control" name="ilist" id="ilist" ng-model="selectedIU" ng-options="i.instrument for i in selectedCU.instruments " ng-change="getPart(selectedPU.title,selectedIU.instrument)">
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="key">Current Key: </label>
+            </div>
+            <div class="col span-2-of-3">
+                <h5>{{part.key}}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="key">New Key: </label>
+            </div>
+           <div class="col span-2-of-3">
+             <input id="key2" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.key">
+            </div>            
+        </div>
+        <button class="btn" type="button" ng-click="updatePart(selectedPU.title, selectedIU.instrument)">Update Part</button>
+    </div>
+</form>    
+</section>

@@ -1,0 +1,106 @@
+<section class="section-form" id="piece-section">
+    <div class="row">
+        <h2>Add Piece</h2>
+    </div>
+   <form>
+        <div class="form-group">
+            <div class="row">
+                  <div class="col span-1-of-3">
+                    <label for="clist">Concert:</label>
+                </div>                                          
+                <div class="col span-2-of-3">
+                        <select class="form-control" name="clist" id="clist" ng-model="selectedC" ng-options="c.name for c in orgData.concerts " ng-change="getPieces(orgData._id,selectedC._id)">
+                        </select>
+                </div>
+            </div> 
+            <br>
+            <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="title">Title:</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                     <input id="title" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.title">
+                    </div>
+             </div>
+            <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="lastname">Composer LastName:</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input id="lastname" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.lastname">
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="firstname">Composer FirstName:</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input id="firstname" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.firstname">
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col span-1-of-3">
+                    <label for="ensemble">Ensemble:</label>
+                </div>
+                <div class="col span-2-of-3">
+                    <input id="ensemble" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.ensemble">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col span-1-of-3">
+                    <label for="chorussource">Chorus Source:</label>
+                </div>
+                <div class="col span-2-of-3">
+                    <input id="chorussource" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.chorussource">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col span-1-of-3">
+                    <label for="symphonysource">Symphony Source:</label>
+                </div>
+                <div class="col span-2-of-3">
+                    <input id="symphonysource" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.symphonysource">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col span-1-of-3">
+                    <label for="duration">Duration:</label>
+                </div>
+                <div class="col span-2-of-3">
+                    <input id="duration" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.duration">
+                </div>
+            </div>
+            <button class="btn" type="submit" ng-click="createPiece(orgData._id,selectedC._id)">Add Piece</button>
+        </div>
+    </form>
+</section>
+
+<section class="concert-pieces-list">
+    <div class="row">
+        <h2>Pieces</h2>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead><tr>
+                <th></th>
+                <th>Piece Title</th>
+                <th>Ensemble</th>
+                <th>Chorus Source</th>
+                <th>Symphony Source</th>
+                <th>Duration</th>
+            </tr></thead>
+            <tbody>
+                <tr ng-repeat="p in pieces">
+                    <td><input type="radio" name="apiece" ng-click="editData.piece = p"></td>
+                    <td>{{p.title}}</td>
+                    <td>{{p.ensemble}}</td>
+                    <td>{{p.chorus_source}}</td>
+                    <td>{{p.chorus_source}}</td>
+                    <td>{{p.duration}}</td>
+                </tr>                  
+            </tbody>
+        </table>
+    </div>
+    <button class="btn" ng-csv="getPiecesCSV()" csv-header="['Piece','Lastname','Firstname','Ensemble','Chorus Source','Symphony Source', 'Duration']" filename="pieces.csv">Download</button>
+    <button class="btn" type="submit" ng-click="EditPiece()">Delete</button>
+</section>

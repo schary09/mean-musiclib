@@ -1,0 +1,36 @@
+<section class="section-form" id="org-section">
+        <div class="row">
+            <h2>Enter Organization Details</h2>
+        </div>
+        <form>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="orgname">Name:</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                     <input id="orgname" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.orgname">
+                    </div>
+                </div>
+               <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="orgowner">Owner Email:</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input id="orgowner" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.orgowner">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="orghome">Location:</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input id="orghome" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.orghome">
+                    </div>
+                </div>
+                <button class="btn" type="submit" ng-click="create()">Add Org</button>
+            <!---<button class="btn" type="submit" ng-click="getOrg()">Get Concerts</button>-->
+                <a href="#/concerts" class='btn btn-primary' ng-click= "getOrg()">Get Concerts</a>
+            </div>
+        </form>
+</section>

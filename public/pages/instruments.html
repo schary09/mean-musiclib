@@ -1,0 +1,50 @@
+<section class="section-form" id="parts-section">
+<div class="row">
+    <h2>Enter Instrument</h2>
+</div>
+<form>
+    <div class="form-group">
+        <div class="row">
+             <div class="col span-1-of-3">
+                <label for="olist">Concert:</label>
+            </div>                           
+            <div class="col span-2-of-3">
+                    <select class="form-control" name="clist" id="clist" ng-model="selectedC" ng-options="c.name for c in orgData.concerts">
+                    </select>
+                   <!--- <select name="clist" id="clist" ng-model="selectedC" ng-options="c.name for c in orgData.concerts " ng-change="getPieces(orgData._id,selectedC._id)">
+                        </select>--->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="instrument">Instrument:</label>
+            </div>
+            <div class="col span-2-of-3">
+                <input id="instrument" type="text" class="form-control input-lg text-center" placeholder="" ng-model="formData.instrument">
+            </div>
+        </div>
+        <button class="btn" type="submit" ng-click="addInstrument(orgData._id,selectedC._id)">Add Instrument</button>
+    </div>
+</form>
+</section>
+
+<section class="concert-instruments-list">
+    <div class="row">
+        <h2>Instruments</h2>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead><tr>
+                <th></th>
+                <th>Instrument</th>
+            </tr></thead>
+            <tbody>
+                <tr ng-repeat="i in selectedC.instruments">
+                    <td><input type="radio" name="ainstrument" ng-click="editData.instrument = i"></td>
+                    <td>{{i.instrument}}</td>
+                </tr>                  
+            </tbody>
+        </table>
+    </div>
+    <button class="btn" type="submit" ng-click="EditInstrument()">Delete</button>
+</section>
