@@ -6,7 +6,6 @@
         //watch?
         $scope.$watch('orgData', function() {
             musicSvc.orgData = $scope.orgData;
-            console.log($scope.orgData);
         });
         
         $scope.getConcerts = function(orgId) {
@@ -43,6 +42,7 @@
                     .success(function(data) {
                     $scope.orgData = data;
                     $scope.concerts = data.concerts;
+                    console.log($scope.concerts);
                 });
             }
         };
@@ -61,8 +61,8 @@
         //get instruments in concert
         $scope.getInstruments = function(orgId, concertId) {
             if(concertId != undefined) { 
-                console.log(orgId);
-                console.log(concertId);
+                //console.log(orgId);
+                //console.log(concertId);
                 musicSvc.getInstruments(orgId, concertId)
                     .success(function(data) {
                     $scope.instruments = data; 
@@ -105,7 +105,7 @@
                 musicSvc.create($scope.formData)
                     .success(function(data) {
                         $scope.formData = {};
-                        $scope.org = data;
+                        $scope.orgData = data;
                         musicSvc.setOrgData(data);
                         console.log(data);
                 });
@@ -121,8 +121,9 @@
                 musicSvc.createConcert(orgId, $scope.formData)
                     .success(function(data) {
                         $scope.formData = {};
-                        $scope.concert = data;
-                    console.log($scope.concert);
+                        $scope.orgData = data; 
+                        $scope.concerts = data.concerts;
+                        //console.log($scope.concert);
                 });
             }
         };
@@ -134,8 +135,9 @@
                 musicSvc.createPiece(orgId, concertId, $scope.formData)
                     .success(function(data) {
                         $scope.formData = {};
-                    $scope.orgData = data;
-                    $scope.concerts = data.concerts;
+                    //$scope.orgData = data;
+                    //$scope.concerts = data.concerts;
+                    $scope.pieces = data;
                 });
             }
         };
@@ -156,7 +158,7 @@
                 musicSvc.createPart(pieceId,instrumentId, $scope.formData)
                     .success(function(data) {
                         $scope.formData = {};
-                        //$scope.concerts = data;
+                        $scope.parts = data;
                 });
             }
         };

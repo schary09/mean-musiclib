@@ -13,7 +13,8 @@
                 return orgData;
             },
             createConcert: function(orgId, concertData) {
-                return $http.post('/api/concert/', {params: {"org_id": orgId, "concert_data": concertData}});
+                orgData =  $http.post('/api/concert/', {params: {"org_id": orgId, "concert_data": concertData}});
+                return orgData;
             },
             createPiece: function(orgId, concertId, pieceData) {
                 return $http.post('/api/concert/piece/', {params: {"org_id": orgId , "concert_id": concertId, "piece_data": pieceData}});

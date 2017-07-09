@@ -39,7 +39,13 @@ module.exports = function(app) {
                      });
                      orgObj.save(function(err, orgObj) {
                          if(err) res.send("Unable to create concert, please contact admin");
-                         res.send(orgObj);
+                         
+                         musiclibModel.findById(req.body.params.org_id, function(err, orgObj){
+                             if (err)
+                                 res.send("Unable to create concert, please contact admin");
+                             console.log(orgObj.concerts);
+                             res.json(orgObj);
+                         });
                      });
                  }
         });
@@ -65,9 +71,14 @@ module.exports = function(app) {
                         symphony_source : req.body.params.piece_data.symphonysource,
                         duration : req.body.params.piece_data.duration                 
                      });
-                     orgObj.save(function(err, concertObj){
+                     orgObj.save(function(err, orgObj){
                          if(err) res.send("Unable to create piece entry, contact admin");
-                         res.send(orgObj);
+                     musiclibModel.findById(req.body.params.org_id, function(err, orgObj) {
+                         if(err) res.send("Unable to create piece entry, contact admin");
+                        var concertObj = orgObj.concerts.id(req.body.params.concert_id);
+                        var pieces = concertObj.pieces;
+                        res.json(pieces); 
+                     });
                      });
                  }
          });
@@ -89,7 +100,11 @@ module.exports = function(app) {
                      });
                      orgObj.save(function(err, concertObj){
                          if(err) res.send("Unable to create instrument entry, contact admin");
-                         res.send(concertObj);
+                     musiclibModel.findById(req.body.params.org_id, function(err, orgObj) {
+                        if(err) res.send("Unable to create instrument entry, contact admin");
+                        var concertObj = orgObj.concerts.id(req.body.params.concert_id);                 var instruments = concertObj.instruments; 
+                        res.json(instruments);
+                     });
                      });
                  }
          });
@@ -104,6 +119,11 @@ module.exports = function(app) {
             key : req.body.params.instrument_data.key
         }, function(err, results) {
             if(err) res.send("Unable to create matrix entry");
+            musicMatrixModel.find({piece_name:req.body.params.piece_name}, function(err, obj){
+                console.log(obj);
+                if(err) res.send("Unable to create matrix entry");
+                res.json(obj);
+            });
         });    
         
     });
@@ -182,6 +202,7 @@ module.exports = function(app) {
             if(err)
                 res.send("Unable to locate organization" + req.params.org_name)
             res.send(result);    
+            console.log(result);
         });
     });
 

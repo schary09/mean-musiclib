@@ -9,10 +9,8 @@
                 <label for="olist">Concert:</label>
             </div>                           
             <div class="col span-2-of-3">
-                    <select class="form-control" name="clist" id="clist" ng-model="selectedC" ng-options="c.name for c in orgData.concerts">
+                    <select class="form-control" name="clist" id="clist" ng-model="selectedC" ng-options="c.name for c in orgData.concerts" ng-change="getInstruments(orgData._id,selectedC._id)">
                     </select>
-                   <!--- <select name="clist" id="clist" ng-model="selectedC" ng-options="c.name for c in orgData.concerts " ng-change="getPieces(orgData._id,selectedC._id)">
-                        </select>--->
             </div>
         </div>
         <div class="row">
@@ -39,7 +37,7 @@
                 <th>Instrument</th>
             </tr></thead>
             <tbody>
-                <tr ng-repeat="i in selectedC.instruments">
+                <tr ng-repeat="i in instruments">
                     <td><input type="radio" name="ainstrument" ng-click="editData.instrument = i"></td>
                     <td>{{i.instrument}}</td>
                 </tr>                  
