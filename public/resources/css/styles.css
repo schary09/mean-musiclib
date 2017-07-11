@@ -9,7 +9,7 @@
 }
 
 html{
-    background-color:#e8e8e8;
+    background-color:#d3d7dd;
     color:#555;
     font-family:'Lato', 'Arial',sans-serif;
     font-size:20px;
@@ -23,7 +23,7 @@ html{
 }
 section {
     padding:40px 40px;
-    background-color:#efc8a6;
+    background-color:#aedae5;
     margin: 40px 40px;
 }
 
@@ -98,6 +98,15 @@ input[type=submit]:active{
     float:right;
     background-color: #e67e22;
 }
+
 .navbar {
     padding-left:40px;
+}
+nav.navbar-default {
+    background-color: #d3d7dd;
+}
+nav.navbar-default .navbar-nav>li>a,
+nav.navbar-default .navbar-brand{
+    color:#574e4e;
+    font-size:150%;
 }

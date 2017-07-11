@@ -219,7 +219,7 @@ module.exports = function(app) {
     });
     
     // Fetch all pieces for a specific concert-works
-    app.get('/api/concert/pieces', function(req, res) {
+    app.get('/api/concert/pieces/', function(req, res) {
         //console.log(req);
         musiclibModel.findById(req.query.org_id, function(err, orgObj) {
             var concertObj = orgObj.concerts.id(req.query.concert_id);
@@ -230,7 +230,7 @@ module.exports = function(app) {
         });
     });
     // Fetch all instruments for a specific concert
-    app.get('/api/concert/instruments', function(req, res) {
+    app.get('/api/concert/instruments/', function(req, res) {
        //console.log(req);
         musiclibModel.findById(req.query.org_id, function(err, orgObj) {
             var concertObj = orgObj.concerts.id(req.query.concert_id);
