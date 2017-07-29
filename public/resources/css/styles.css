@@ -62,7 +62,8 @@ h2:after {
     margin-top:20px;
 }
 
-/* Main nav*/
+/* Main nav
+
 .main-nav{
     float:right;
     list-style:none;
@@ -77,7 +78,7 @@ h2:after {
 .main-nav li a:hover,
 .main-nav li a:active{
     border-bottom: 2px solid #e67e22;
-}
+}*/
 
 input[type=submit] {
     font-size:100%;
@@ -99,14 +100,27 @@ input[type=submit]:active{
     background-color: #e67e22;
 }
 
-.navbar {
+.navbar.heading {
     padding-left:40px;
+    margin-bottom:0px;
 }
 nav.navbar-default {
     background-color: #d3d7dd;
 }
+nav.navbar-default.titlebar {
+    font-size:200%;
+    font-style:italic;
+    background-color:#000;
+    padding:50px;
+}
+
 nav.navbar-default .navbar-nav>li>a,
 nav.navbar-default .navbar-brand{
     color:#574e4e;
     font-size:150%;
+}
+
+nav.navbar-default .navbar-nav>li>a:hover,
+nav.navbar-default .navbar-nav>li>a:active{
+    color:#e67e22;
 }
