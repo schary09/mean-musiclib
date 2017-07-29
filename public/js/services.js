@@ -45,7 +45,7 @@
                 return $http.get('/api/concert/pieces/', {params: {"org_id": orgId, "concert_id": concertId}});
             },
             getInstruments: function(orgId, concertId) {
-                return $http.post('/api/concert/instruments/', {params: {"org_id": orgId , "concert_id": concertId}});
+                return $http.get('/api/concert/instruments/', {params: {"org_id": orgId , "concert_id": concertId}});
             },           
             getParts: function (pieceName) {
                 return $http.get('/api/concert/piece/parts/', {params: {"piece_name": pieceName}}); // can use id too
